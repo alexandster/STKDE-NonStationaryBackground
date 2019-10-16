@@ -10,6 +10,8 @@ Required modules: numpy, scipy
 
 Execute in order
 
+random_points.r - Creates random points (x, y) within neighborhood polygons 
+
 ST_IB_1.py - Computes s/t bandwidths of kernels centered on data points
 
 ST_IB_2.py - Computes population within each kernel
