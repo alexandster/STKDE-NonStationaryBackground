@@ -1,5 +1,5 @@
 # random_points.r, by Alexander Hohl
-# This script creates random points within the neighborhood polygons (barrios). The number of points is equal to the total population 2010 (plus 100 additional points for future population increase) 
+# This script creates random points within the neighborhood polygons (barrios). The number of points is equal to the total population 2010 (plus 100 additional points for future population increase). The barrio polygons are available here: http://idesc.cali.gov.co/geovisor.php. The population data is available here: https://planeacion.cali.gov.co/informacionestadisticacali/?dir=Demografia. Barrio population and geometries have to be joined.    
 
 # import necessary libraries
 library(maptools)
