@@ -10,14 +10,14 @@ Required modules: numpy, scipy
 
 Execute in order
 
-random_points.r - Creates random points (x, y) within neighborhood polygons 
+1. random_points.r - Creates random points (x, y) within neighborhood polygons 
 
-pop.py - Creates population columns based on random points and population changes (random_points.r)
+2. pop.py - Creates population columns based on random points and population changes (random_points.r)
 
-ST_IB_1.py - Computes s/t bandwidths of kernels centered on data points
+3. ST_IB_1.py - Computes s/t bandwidths of kernels centered on data points
 
-ST_IB_2.py - Computes population within each kernel
+4. ST_IB_2.py - Computes population within each kernel
 
-ST_IB_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
+5. ST_IB_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
 
-ST_IB_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
+6. ST_IB_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
