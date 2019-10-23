@@ -1,3 +1,6 @@
+#ST_IB_2.py, by Alexander Hohl
+#This script computes population within each kernel
+
 import numpy as np
 from scipy import spatial
 import sys, os

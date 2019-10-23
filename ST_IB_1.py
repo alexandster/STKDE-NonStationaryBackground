@@ -1,3 +1,6 @@
+#ST_IB_1.py, by Alexander Hohl
+#This script describes the computation of space-time bandwidths of kernels centered on data points
+
 import numpy as np
 from scipy import spatial
 import sys

@@ -1,3 +1,6 @@
+#ST_IB_4.py, by Alexander Hohl
+#This script creates an index file that delineates clusters based on risk threshold and computes odds ratios.
+
 import numpy as np
 from scipy import spatial
 import math, sys, os
@@ -24,7 +27,7 @@ yDim = int((ymax - ymin)/xyRes)
 tDim = int((tmax - tmin)/tRes)  
 
 indir = '/outputs/ST_IB_3' + os.sep + 'sim_' + sim
-outDir = /outputs/ST_IB_4' + os.sep + 'sim_' + sim
+outDir = '/outputs/ST_IB_4' + os.sep + 'sim_' + sim
 
 #load regular grid: 2d grid of tuples: (x, y, t, nCount, pCount, k)
 inArr = np.loadtxt(indir + os.sep + 'density_' + neighThres + '.txt',delimiter=',')
