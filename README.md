@@ -21,3 +21,12 @@ Execute in order
 5. ST_IB_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
 
 6. ST_IB_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
+
+
+7. ST_MC_1.py - Computes s/t bandwidths of kernels centered on simulated data points
+
+8. ST_MC_2.py - Computes population within each kernel
+
+9. ST_MC_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
+
+10. ST_MC_4.py - Delineates clusters based on risk threshold. Computes odds ratios.

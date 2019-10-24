@@ -72,7 +72,7 @@ while xG < xmax:
 i = 0
 popList = []
 while i <  3:		#for each neighborhood in study area
-    popFile = open("pop_model/sim_" + sim + os.sep + "barrio_" + str(i) + ".txt", "r")
+    popFile = open('outputs/pop_model/sim_' + sim + os.sep + 'barrio_' + str(i) + '.txt', 'r')
     for record in popFile:
         x, y, tStart, tEnd = record.split(",")
         popList.append([float(x),float(y),float(tStart),float(tEnd.strip()), 0])
@@ -83,7 +83,7 @@ popArr = np.array(popList)
 
 #------------------------------------------------
 ## read file containing case coordinates and bandwidths [ID, x, y, t, hs, ht]
-disFile = open('/outputs/ST_IB_1/bandwidths_' + neighThres + '.txt', "r")
+disFile = open('outputs/ST_IB_1/bandwidths_' + neighThres + '.txt', "r")
 disList = []
 for record in disFile:
     line = record.split(",")
@@ -140,5 +140,5 @@ for i in disList:
 
 outFile.close()
 
-np.save('outputs/ST_IB_2' + os.sep + "fullGrid_" + neighThres,fullGridArr)
+np.save('outputs/ST_IB_2' + os.sep + 'fullGrid_' + neighThres,fullGridArr)
 

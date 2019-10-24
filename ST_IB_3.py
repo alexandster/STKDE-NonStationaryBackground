@@ -58,7 +58,7 @@ yDim = int((ymax - ymin)/xyRes)
 tDim = int((tmax - tmin)/tRes)  
 
 #load regular grid: 3d grid of tuples: (x, y, t, nCount, pCount, ds, dt)
-fullGridArr = np.load('/outputs/ST_IB_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')   
+fullGridArr = np.load('outputs/ST_IB_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')   
 
 #------------------------------------------------
 ## read file containing case coordinates and bandwidths

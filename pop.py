@@ -19,7 +19,7 @@ import sys, os, random, numpy as np
 sim = sys.argv[1]
 
 # create output directory
-outDir = r"pop_model_out/sim_" + sim
+outDir = "outputs/pop_model/sim_" + sim
 if not os.path.exists(outDir):
     os.makedirs(outDir)
 
@@ -31,7 +31,7 @@ i = 0
 while i < 334:
     
     #read file of random points
-    pointFile = open("barrios_rand/sim_" + sim + os.sep + "barrio_" + str(i) + ".txt")
+    pointFile = open("outputs/barrios_rand/sim_" + sim + os.sep + "barrio_" + str(i) + ".txt")
     pointFile.readline()
     pointArr = []
     for j in pointFile:
@@ -39,7 +39,7 @@ while i < 334:
         pointArr.append([float(line[1]),float(line[2]), 0, 730])
 
     #read population count file
-    popFile = open("barrios_rand/sim_" + sim + os.sep + "barrio_ypop_" + str(i) + ".txt")
+    popFile = open("outputs/barrios_rand/sim_" + sim + os.sep + "barrio_ypop_" + str(i) + ".txt")
     popFile.readline()
     popArr = []
     for k in popFile:

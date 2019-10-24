@@ -13,7 +13,7 @@ crs1=CRS("+proj=utm +zone=18 +ellps=intl +towgs84=307,304,-318,0,0,0,0 +units=m 
 for (j in 0:99){ 
 
 # create output directory 
-dir.create(paste("barrios_rand/sim_", toString(j), sep=""))
+dir.create(paste("outputs/barrios_rand/sim_", toString(j), sep=""))
 
 # for each barrio
 for (i in 0:333){
@@ -25,10 +25,10 @@ for (i in 0:333){
   pts <- rpoint(ceiling(barrio$Total2013 + 100), win = barrio)
   
   # write file that contains initial populations for years 2009, 2010, 2011, 2012 and 2013
-  write.table(c(barrio$Total2009,barrio$Total2010,barrio$Total2011,barrio$Total2012,barrio$Total2013), paste("barrios_rand/sim_", toString(j), "/" ,"barrio_ypop_", toString(i), ".txt", sep=""))
+  write.table(c(barrio$Total2009,barrio$Total2010,barrio$Total2011,barrio$Total2012,barrio$Total2013), paste("outputs/barrios_rand/sim_", toString(j), "/" ,"barrio_ypop_", toString(i), ".txt", sep=""))
 
   # write file that contains the random points 2010 population 
-  write.table(cbind(pts$x,pts$y), paste("barrios_rand/sim_", toString(j), "/" ,"barrio_", toString(i), ".txt", sep=""))
+  write.table(cbind(pts$x,pts$y), paste("outputs/barrios_rand/sim_", toString(j), "/" ,"barrio_", toString(i), ".txt", sep=""))
   
 
 }

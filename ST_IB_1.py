@@ -35,7 +35,7 @@ for neighThres in neighThresList:
 
     #------------------------------------------------
     # open output file
-    outFile = open("/outputs/ST_IB_1/bandwidths_" + str(neighThres) + ".txt",'w')
+    outFile = open('outputs/ST_IB_1/bandwidths_' + str(neighThres) + '.txt','w')
 
     i = 0              # iterator variable
 
