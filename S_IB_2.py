@@ -64,49 +64,42 @@ while xG < xmax:
 i = 0
 popList = []
 while i <  334:
-    popFile = open("pop/sim_" + sim + os.sep + "barrio_" + str(i) + ".txt", "r")
+    popFile = open('outputs/pop_model/sim_' + sim + os.sep + 'barrio_' + str(i) + '.txt', 'r')
     for record in popFile:
-        x = record.split(",")[0]
-        y = record.split(",")[1]
+        x = record.split(',')[0]
+        y = record.split(',')[1]
         popList.append([float(x),float(y), 0])
     popFile.close()
     i += 1
 
 popArr = np.array(popList)
-print("population files added to array")
-#'''
+
 #------------------------------------------------
 ## read file containing case coordinates and bandwidths [ID, x, y, hs]
-disFile = open('/scratch/ahohl/dissertation2D/out_1/bandwidths_' + neighThres + '.txt', "r")
+disFile = open('outputs/S_IB_1/bandwidths_' + neighThres + '.txt', 'r')
 disList = []
 for record in disFile:
     #print record
-    line = record.split(",")
+    line = record.split(',')
     disList.append([float(line[0]),float(line[1]),float(line[2]),float(line[3])])
 disFile.close()
 numPts = len(disList)
-print("case file read")
 
 #------------------------------------------------
-# create directory
-outDir = "/scratch/ahohl/dissertation2D/out_2" + os.sep + "sim_" + sim
-
 # open output File
-outFile = open(outDir + os.sep + "peopleTime_" + neighThres + ".txt",'w')
+outFile = open('outputs/S_IB_2' + os.sep + 'sim_' + sim + os.sep + 'peopleTime_' + neighThres + '.txt','w')
 
 #------------------------------------------------
 
 #build kd tree
 sTree = spatial.cKDTree(popArr[:,:2])
-#print(disList)
+
 count = 0
 #for each disease case, compute populaiton inside kernel
 for i in disList:
 
     sCoord = i[1:3]
 
-    #print(sCoord)
-#'''
     # query the tree: return all population points within bandwidth
     sNeigh = sTree.query_ball_point(sCoord, i[3])
 
@@ -124,15 +117,10 @@ for i in disList:
             popArr[j,2] = 1 
 
     #[ID, x, y, hs, p] |p: population
-    outFile.write(str(i[0]) + "," + str(i[1]) + "," + str(i[2]) + "," + str(i[3]) + "," + str(p) + "\n")
+    outFile.write(str(i[0]) + ',' + str(i[1]) + ',' + str(i[2]) + ',' + str(i[3]) + ',' + str(p) + '\n')
 
     count += 1
 
 outFile.close()
 
-print("loop through cases done")
-
-np.save(outDir + os.sep + "fullGrid_" + neighThres,fullGridArr)
-
-print("fullGridArr saved")
-#'''
+np.save('outputs/S_IB_2' + os.sep + 'sim_' + sim + os.sep + 'fullGrid_' + neighThres,fullGridArr)

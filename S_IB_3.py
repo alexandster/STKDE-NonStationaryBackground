@@ -5,10 +5,6 @@ import math, sys, os
 sim = sys.argv[1]
 neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
 
-#sim = "0"
-#neighThres = "5"       # minimum number of ST neighbors threshold
-
-
 #spatiotemporal domain
 xmin, xmax, ymin, ymax = 323000, 337300, 369100, 387700
 
@@ -49,7 +45,7 @@ def densityF(x, y, xi, yi, hs):
 #number of points in each dimension
 xDim = int((xmax - xmin)/xyRes)  
 yDim = int((ymax - ymin)/xyRes)  
-print("xDim: ", xDim, "yDim: ", yDim)
+print('xDim: ', xDim, 'yDim: ', yDim)
 
 #load regular grid: 3d grid of tuples: (x, y, nCount, pCount, ds)
 fullGridArr = np.load('/scratch/ahohl/dissertation2D/out_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')   
@@ -58,12 +54,12 @@ fullGridArr = np.load('/scratch/ahohl/dissertation2D/out_2/sim_' + sim + os.sep 
 ## read file containing case coordinates and bandwidths
 ## for each case, find spatiotemporal grid point neighbors and compute risk contribition
 
-inDir = "/scratch/ahohl/dissertation2D/out_2" + os.sep + "sim_" + sim
-disFile = open(inDir + os.sep + "peopleTime_" + neighThres + ".txt",'r')
+inDir = 'outputs/S_IB_2' + os.sep + 'sim_' + sim
+disFile = open(inDir + os.sep + 'peopleTime_' + neighThres + '.txt','r')
 
 rCount = 0
 for record in disFile:
-    line = record.split(",")
+    line = record.split(',')
 	#coordinates of case point, bandwidths, population within kernel
     xC, yC, hs, pop = float(line[1]),float(line[2]),float(line[3]),float(line[4])
 
@@ -129,15 +125,15 @@ print(max(testList))
 outArr[:,5]= outArr[:,5]/max(outArr[:,5])
 
 # create directory
-outdir = "/scratch/ahohl/dissertation2D/out_3" + os.sep + "sim_" + sim
+outdir = 'oututs/S_IB_3' + os.sep + 'sim_' + sim
 
-outFile = open(outdir + os.sep + "density_" + neighThres + ".txt","w")
+outFile = open(outdir + os.sep + 'density_' + neighThres + '.txt','w')
 
 for i in outArr:
     if i[1] == 0 and i[2] == 0:
         pass
     else:
         #write[x,y,nCount,pCount,density]
-        outFile.write(str(i[1]) + "," + str(i[2]) + "," + str(i[3]) + "," + str(i[4]) + "," + str(i[5]) + "\n")
+        outFile.write(str(i[1]) + ',' + str(i[2]) + ',' + str(i[3]) + ',' + str(i[4]) + ',' + str(i[5]) + '\n')
 
 outFile.close()

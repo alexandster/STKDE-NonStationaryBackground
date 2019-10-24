@@ -16,11 +16,11 @@ xyResHalf = xyRes/2.0
 xDim = int((xmax - xmin)/xyRes)  
 yDim = int((ymax - ymin)/xyRes)    
 
-indir = "/scratch/ahohl/dissertation2D/out_3" + os.sep + "sim_" + sim
-outDir = "/scratch/ahohl/dissertation2D/out_4" + os.sep + "sim_" + sim
+indir = 'outputs/S_IB_3' + os.sep + 'sim_' + sim
+outDir = 'outputs/S_IB_4' + os.sep + 'sim_' + sim
 
 #load regular grid: 2d grid of tuples: (x, y, nCount, pCount, d)
-inArr = np.loadtxt(indir + os.sep + "density_" + neighThres + ".txt",delimiter=",")
+inArr = np.loadtxt(indir + os.sep + 'density_' + neighThres + '.txt',delimiter=',')
 
 #compute total number of cases and controls
 casTotal = sum(inArr[:,2])	#cases
@@ -29,7 +29,7 @@ conTotal = sum(inArr[:,3])	#controls
 #discard zero density voxels
 nonZeroIndex = np.where(inArr[:,4] > 0.0)
 
-outFile = open(outDir + os.sep + "odds_ratio_" + neighThres + ".txt", "w")
+outFile = open(outDir + os.sep + 'odds_ratio_' + neighThres + '.txt', 'w')
 
 #percentile thresholds of disease risk
 percThresList = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.9, 99.99] 
@@ -54,9 +54,7 @@ for percThres in percThresList:
 
     oddsRatio = clustRatio/nonClustRatio
 
-#    print oddsRatio
-
-    outFile.write(str(oddsRatio) + "\n") 
+    outFile.write(str(oddsRatio) + '\n') 
 
 outFile.close()
 
