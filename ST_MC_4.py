@@ -20,8 +20,8 @@ xDim = int((xmax - xmin)/xyRes)
 yDim = int((ymax - ymin)/xyRes)  
 tDim = int((tmax - tmin)/tRes)  
 
-indir = "outputs/ST_IB_MC_3" + os.sep + "sim_" + sim
-outDir = "outputs/ST_IB_MC_4" + os.sep + "sim_" + sim
+indir = 'outputs/ST_MC_3' + os.sep + 'sim_' + sim
+outDir = 'outputs/ST_MC_4' + os.sep + 'sim_' + sim
 
 #load regular grid: 2d grid of tuples: (x, y, t, nCount, pCount, k)
 inArr = np.loadtxt(indir + os.sep + "density_" + neighThres + ".txt",delimiter=",")

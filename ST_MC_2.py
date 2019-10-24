@@ -72,7 +72,7 @@ while xG < xmax:
 i = 0
 popList = []
 while i <  334:
-    popFile = open('outputs/pop_model/sim_0/barrio_" + str(i) + ".txt", "r")
+    popFile = open('outputs/pop_model/sim_0/barrio_" + str(i) + ".txt", "r")		#since uncertainty from population simulation is small, we can just pick the first dataset
     for record in popFile:
         x, y, tStart, tEnd = record.split(",")
         popList.append([float(x),float(y),float(tStart),float(tEnd.strip()), 0])
@@ -83,7 +83,7 @@ popArr = np.array(popList)
 
 #------------------------------------------------
 ## read file containing case coordinates and bandwidths [ID, x, y, t, hs, ht]
-disFile = open('/outputs/ST_IB_MC_1/sim_' + sim + os.sep + 'bandwidths_' + neighThres + '.txt', "r")
+disFile = open('outputs/ST_MC_1/sim_' + sim + os.sep + 'bandwidths_' + neighThres + '.txt', "r")
 disList = []
 for record in disFile:
     line = record.split(",")
@@ -93,7 +93,7 @@ numPts = len(disList)
 
 #------------------------------------------------
 # output directory
-outDir = 'outputs/ST_IB_MC_2' + os.sep + 'sim_' + sim
+outDir = 'outputs/ST_MC_2' + os.sep + 'sim_' + sim
 
 # open output File
 outFile = open(outDir + os.sep + "peopleTime_" + neighThres + ".txt",'w')
