@@ -15,68 +15,68 @@ Execute in order
    - outputs: initial population for years (2009, 2010, 2011, 2012, 2013), random points for 2010 population
    
 2. pop.py - Creates population columns based on random points and population changes (random_points.r)
-  - parameters: simulation number
-  - inputs: initial population (2009, 2010, 2011, 2012, 2013), random points for 2010 population
-  - outputs: population columns 
+   - parameters: simulation number
+   - inputs: initial population (2009, 2010, 2011, 2012, 2013), random points for 2010 population
+   - outputs: population columns 
 
 
 3. ST_IB_1.py - Computes s/t bandwidths of kernels centered on data points
-  - inputs: observed points
-  - outputs: Bandwidths for each ST neighbor threshold
+   - inputs: observed points
+   - outputs: Bandwidths for each ST neighbor threshold
 
 4. ST_IB_2.py - Computes population within each kernel
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: population columns, bandwidths
-  - outputs: population within each kernel
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: population columns, bandwidths
+   - outputs: population within each kernel
 
 5. ST_IB_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: population within each kernel, bandwidths
-  - outputs: risk estimates
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: population within each kernel, bandwidths
+   - outputs: risk estimates
 
 6. ST_IB_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: risk estimates
-  - outputs: odds ratios
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: risk estimates
+   - outputs: odds ratios
 
 
 7. ST_MC_1.py - Computes s/t bandwidths of kernels centered on simulated data points
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: simulated points
-  - bandwidths
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: simulated points
+   - outputs: bandwidths
 
 8. ST_MC_2.py - Computes population within each kernel
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: populaiton columns, bandwidths
-  - outputs: population within kernel
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: populaiton columns, bandwidths
+   - outputs: population within kernel
 
 9. ST_MC_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: bandwdidths, population within kernel
-  - outputs: risk estimates
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: bandwdidths, population within kernel
+   - outputs: risk estimates
 
 10. ST_MC_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: risk estimates
-  - outputs: odds ratios
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: risk estimates
+   - outputs: odds ratios
   
   
 11. S_IB_1.py - Computes s/t bandwidths of kernels centered on observed data points, disregarding temporal dimension
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: simulated points
-  - bandwidths
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: simulated points
+   - outputs: bandwidths
 
 12. S_IB_2.py - Computes population within each kernel
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: populaiton columns, bandwidths
-  - outputs: population within kernel
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: populaiton columns, bandwidths
+   - outputs: population within kernel
 
 13. S_IB_3.py - Computes ST-IB based on kernel bandwidths (S_IB_1.py) and population within kernel (S_IB_2)
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: bandwdidths, population within kernel
-  - outputs: risk estimates
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: bandwdidths, population within kernel
+   - outputs: risk estimates
 
 14. S_IB_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
-  - parameters: simulation number, ST neighbor threshold
-  - inputs: risk estimates
-  - outputs: odds ratios
+   - parameters: simulation number, ST neighbor threshold
+   - inputs: risk estimates
+   - outputs: odds ratios
