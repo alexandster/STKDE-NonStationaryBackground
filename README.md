@@ -19,6 +19,7 @@ Execute in order
   - inputs: initial population (2009, 2010, 2011, 2012, 2013), random points for 2010 population
   - outputs: population columns 
 
+
 3. ST_IB_1.py - Computes s/t bandwidths of kernels centered on data points
   - inputs: observed points
   - outputs: Bandwidths for each ST neighbor threshold
@@ -37,6 +38,7 @@ Execute in order
   - parameters: simulation number, ST neighbor threshold
   - inputs: risk estimates
   - outputs: odds ratios
+
 
 7. ST_MC_1.py - Computes s/t bandwidths of kernels centered on simulated data points
   - parameters: simulation number, ST neighbor threshold
@@ -57,6 +59,7 @@ Execute in order
   - parameters: simulation number, ST neighbor threshold
   - inputs: risk estimates
   - outputs: odds ratios
+  
   
 11. S_IB_1.py - Computes s/t bandwidths of kernels centered on observed data points, disregarding temporal dimension
   - parameters: simulation number, ST neighbor threshold
