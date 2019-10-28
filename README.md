@@ -25,7 +25,7 @@ Execute in order
 
 4. ST_IB_2.py - Computes population within each kernel
   - parameters: simulation number, ST neighbor threshold
-  - inputs: population columns, Bandwidths
+  - inputs: population columns, bandwidths
   - outputs: population within each kernel
 
 5. ST_IB_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
@@ -39,9 +39,41 @@ Execute in order
   - outputs: odds ratios
 
 7. ST_MC_1.py - Computes s/t bandwidths of kernels centered on simulated data points
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: simulated points
+  - bandwidths
 
 8. ST_MC_2.py - Computes population within each kernel
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: populaiton columns, bandwidths
+  - outputs: population within kernel
 
 9. ST_MC_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: bandwdidths, population within kernel
+  - outputs: risk estimates
 
 10. ST_MC_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: risk estimates
+  - outputs: odds ratios
+  
+11. S_IB_1.py - Computes s/t bandwidths of kernels centered on observed data points, disregarding temporal dimension
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: simulated points
+  - bandwidths
+
+12. S_IB_2.py - Computes population within each kernel
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: populaiton columns, bandwidths
+  - outputs: population within kernel
+
+13. S_IB_3.py - Computes ST-IB based on kernel bandwidths (S_IB_1.py) and population within kernel (S_IB_2)
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: bandwdidths, population within kernel
+  - outputs: risk estimates
+
+14. S_IB_4.py - Delineates clusters based on risk threshold. Computes odds ratios.
+  - parameters: simulation number, ST neighbor threshold
+  - inputs: risk estimates
+  - outputs: odds ratios
