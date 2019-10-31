@@ -34,6 +34,7 @@ outFile = open(outDir + os.sep + 'odds_ratio_' + neighThres + '.txt', 'w')
 #percentile thresholds of disease risk
 percThresList = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.9, 99.99] 
 
+#perc loop
 for percThres in percThresList:
 
     #compute threshold (percentile)
