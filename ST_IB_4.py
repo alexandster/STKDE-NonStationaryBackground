@@ -42,6 +42,7 @@ nonZeroIndex = np.where(inArr[:,5] > 0.0)
 outFile = open(outDir + os.sep + "odds_ratio_" + neighThres + ".txt", "w")
 
 for percThres in percThresList:
+    print(percThres)
 
     #compute threshold (percentile)
     thres = np.percentile(inArr[nonZeroIndex][:,5], percThres)

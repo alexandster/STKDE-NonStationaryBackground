@@ -10,7 +10,7 @@ neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
 
 #------------------------------------------------
 #points_obs spatiotemporal envelope (domain)
-xmin, xmax, ymin, ymax, tmin, tmax = 322896.6389, 337268.7369, 368748.6975, 387824.4062, 3, 658
+xmin, xmax, ymin, ymax, tmin, tmax = 323000, 337300, 369100, 387700, 0, 730
 
 # spatial and temporal resolution of output grid
 xyRes, tRes = 100, 1
@@ -87,7 +87,6 @@ disFile = open('outputs/ST_IB_1/bandwidths_' + neighThres + '.txt', "r")
 disList = []
 for record in disFile:
     line = record.split(",")
-    print(line)
     disList.append([float(line[0]),float(line[1]),float(line[2]),float(line[3]),float(line[4]),float(line[5])])
 	
 disFile.close()
@@ -95,7 +94,7 @@ numPts = len(disList)
 
 #------------------------------------------------
 # open output File
-outFile = open('outputs/ST_IB_2' + os.sep + 'peopleTime_' + neighThres + '.txt','w')
+outFile = open('outputs/ST_IB_2' + os.sep + 'sim_' + sim + os.sep + 'peopleTime_' + neighThres + '.txt','w')
 
 #------------------------------------------------
 # define get overlap function. returns overlap between two intervals.
@@ -140,5 +139,6 @@ for i in disList:
 
 outFile.close()
 
-np.save('outputs/ST_IB_2' + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+#fullGridArr: [x, y, t, 0, pCount, 0, 0]
+np.save('outputs/ST_IB_2' + os.sep + 'sim_' + sim + os.sep + 'fullGrid_' + neighThres,fullGridArr)
 

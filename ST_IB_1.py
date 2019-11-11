@@ -37,7 +37,7 @@ for neighThres in neighThresList:
     # open output file
     outFile = open('outputs/ST_IB_1/bandwidths_' + str(neighThres) + '.txt','w')
 
-    i = 0              # iterator variable
+    i = 200              # iterator variable. ignore first couple of datapoints because they are early in the study period and might not have enough teporal neighbors.
 
     #------------------------------------------------
     #loop through all data points
@@ -62,6 +62,7 @@ for neighThres in neighThresList:
 
         # append temporal neighbors to list. procedure ensures that only cases from the past are considered.
         # it also deals with cases that co-occur at the same time.
+        #print(inXYT_s[current,2], inXYT_s[i,2])
         while inXYT_s[current,2] < inXYT_s[i,2]:
             tNeigh.insert(0,current)
             current += 1
@@ -84,7 +85,7 @@ for neighThres in neighThresList:
                 k = j
             else:
                 k = len(tNeigh) - 1
-
+            #print(tNeigh)
             tDist = tCoord - inXYT_s[tNeigh[k],2]
 
             if sDist > sDistMax:
@@ -93,6 +94,7 @@ for neighThres in neighThresList:
                 tDistMax = tDist
 
             j += 1
+        #print(j, tCoord)
 
         outFile.write(str(i) + "," + str(sCoord[0]) + "," + str(sCoord[1]) + "," + str(tCoord) + "," + str(sDistMax) + "," + str(tDistMax) + "\n")
 

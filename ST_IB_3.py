@@ -10,7 +10,7 @@ neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
 
 #------------------------------------------------
 #points_obs spatiotemporal envelope (domain)
-xmin, xmax, ymin, ymax, tmin, tmax = 322896.6389, 337268.7369, 368748.6975, 387824.4062, 3, 658
+xmin, xmax, ymin, ymax, tmin, tmax = 323000, 337300, 369100, 387700, 0, 730
 
 # spatial and temporal resolution of output grid
 xyRes, tRes = 100, 1
@@ -58,13 +58,13 @@ yDim = int((ymax - ymin)/xyRes)
 tDim = int((tmax - tmin)/tRes)  
 
 #load regular grid: 3d grid of tuples: (x, y, t, nCount, pCount, ds, dt)
-fullGridArr = np.load('outputs/ST_IB_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')   
+fullGridArr = np.load('outputs/ST_IB_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')
 
 #------------------------------------------------
 ## read file containing case coordinates and bandwidths
 ## for each case, find spatiotemporal grid point neighbors and compute risk contribition
 
-disFile = open('outputs/ST_IB_2' + os.sep + 'sim_' + sim + os.sep + 'peopleTime_' + neighThres + '.txt','r')
+disFile = open('outputs/ST_IB_2' + os.sep + 'peopleTime_' + neighThres + '.txt','r')
 
 rCount = 0
 for record in disFile:
@@ -77,7 +77,7 @@ for record in disFile:
     qX, qY, qT = cIndex[0],cIndex[1],cIndex[2]  #query point index
     sDeg = int(hs / xyRes)
     tDeg = int(ht / tRes)
-    #print coordToIndex(xC, yC, tC)
+    #pCount: number of cases in voxel
     if (qX < xDim and qX >= 0) and (qY < yDim and qY >= 0) and (qT < tDim and qT >= 0):
         fullGridArr[qX][qY][qT][3] += 1
 
@@ -103,13 +103,17 @@ for record in disFile:
 
 	                            #compute density contribution
 	                            STKDE = densityF(xC, yC, tC, nX, nY, nT, hs, ht)
-	                            fullGridArr[i][j][k][5] += STKDE[0] / pop
-	                            fullGridArr[i][j][k][6] += STKDE[1] / pop
-
+                                #print(densityF(xC, yC, tC, nX, nY, nT, hs, ht))
+	                            fullGridArr[i][j][k][5] += STKDE[0] / pop       #column 5 of fullGridArr (formerly spatial bandwidth ds) is overwritten here to hold spatial KDE value ks
+	                            fullGridArr[i][j][k][6] += STKDE[1] / pop       #column 6 of fullGridArr (formerly temporal bandwidth dt) is overwritten here to hold temporal KDE value kt
+                                #print(fullGridArr[i][j][k][5])
     rCount += 1
 
 disFile.close()
 
+np.save('outputs/ST_IB_3' + os.sep + 'sim_' + sim + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+
+'''
 #initialize output array
 nRows = xDim * yDim * tDim
 nCols = 8   #columns ID, x, y, t, nCount, Ks, Kt
@@ -132,6 +136,7 @@ while xIndex < xDim:
             outArr[ID][5] = fullGridArr[xIndex][yIndex][tIndex][4]     #pCount
             outArr[ID][6] = fullGridArr[xIndex][yIndex][tIndex][5]     #s-density Ks
             outArr[ID][7] = fullGridArr[xIndex][yIndex][tIndex][6]     #t-density Kt
+            print(outArr[ID][6],outArr[ID][6])
 
             ID += 1
             tIndex += 1
@@ -144,9 +149,9 @@ outArr[:,7]= outArr[:,7]/max(outArr[:,7])
 outArr[:,6]= outArr[:,6] * outArr[:,7]
 
 #delete column
-finalArr = np.delete(outArr, (7), 1)
+finalArr = np.delete(outArr, (7), 1)        #finalArr: [ID, x, y, t, nCount, pCount, density]
 
-outFile = open('outputs/ST_IB_3' + os.sep + 'density_' + neighThres + '.txt','w')
+outFile = open('outputs/ST_IB_3/sim_' + sim + os.sep + 'density_' + neighThres + '.txt','w')
 
 for i in finalArr:
     if i[1] == 0 and i[2] == 0 and i[3]  == 0:
@@ -156,3 +161,4 @@ for i in finalArr:
         outFile.write(str(i[1]) + "," + str(i[2]) + "," + str(i[3]) + "," + str(i[4]) + "," + str(i[5]) + "," + str(i[6]) + "\n")
 
 outFile.close()
+'''
