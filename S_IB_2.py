@@ -86,8 +86,14 @@ disFile.close()
 numPts = len(disList)
 
 #------------------------------------------------
+
+outDir = 'outputs/S_IB_2' + os.sep + 'sim_' + sim
+# make output directory
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+
 # open output File
-outFile = open('outputs/S_IB_2' + os.sep + 'sim_' + sim + os.sep + 'peopleTime_' + neighThres + '.txt','w')
+outFile = open(outDir + os.sep + 'peopleTime_' + neighThres + '.txt','w')
 
 #------------------------------------------------
 
