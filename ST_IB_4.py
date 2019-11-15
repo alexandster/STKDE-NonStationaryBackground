@@ -9,7 +9,8 @@ sim = sys.argv[1]
 neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
 
 #percentile thresholds of disease risk
-percThresList = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.9, 99.99] 
+#percThresList = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.9, 99.99]
+percThresList = [91, 93, 95, 97, 99, 99.99]
 
 #------------------------------------------------
 #points_obs spatiotemporal envelope (domain)
@@ -27,10 +28,14 @@ yDim = int((ymax - ymin)/xyRes)
 tDim = int((tmax - tmin)/tRes)  
 
 indir = 'outputs/ST_IB_3' + os.sep + 'sim_' + sim
+
+outDir = 'outputs/ST_IB_4' + os.sep + 'sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
 outDir = 'outputs/ST_IB_4' + os.sep + 'sim_' + sim
 
 #load regular grid: 2d grid of tuples: (x, y, t, nCount, pCount, k)
-inArr = np.loadtxt(indir + os.sep + 'density_' + neighThres + '.txt',delimiter=',')
+inArr = np.loadtxt(indir + os.sep + 'density_v2_' + neighThres + '.txt',delimiter=',')
 
 #compute total number of cases and controls
 casTotal = sum(inArr[:,3])	#cases
@@ -47,14 +52,16 @@ for percThres in percThresList:
     #compute threshold (percentile)
     thres = np.percentile(inArr[nonZeroIndex][:,5], percThres)
 
+
     #select voxels with densities above threshold 
     aboveThresIndex = np.where(inArr[:,5] > thres)
 
-    np.save(outDir + os.sep + "clustIndex_" + str(neighThres) + "_" + str(percThres), aboveThresIndex)
+    #np.save(outDir + os.sep + "clustIndex_" + str(neighThres) + "_" + str(percThres), aboveThresIndex)
 
     #compute number of cases and controls inside cluster
     casClust = sum(inArr[aboveThresIndex][:,3])
     conClust = sum(inArr[aboveThresIndex][:,4])
+    print(casClust, conClust)
 
     casNonClust = casTotal-casClust
     conNonClust = conTotal-conClust

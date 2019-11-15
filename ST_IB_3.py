@@ -64,7 +64,7 @@ fullGridArr = np.load('outputs/ST_IB_2/sim_' + sim + os.sep + 'fullGrid_' + neig
 ## read file containing case coordinates and bandwidths
 ## for each case, find spatiotemporal grid point neighbors and compute risk contribition
 
-disFile = open('outputs/ST_IB_2' + os.sep + 'peopleTime_' + neighThres + '.txt','r')
+disFile = open('outputs/ST_IB_2' + os.sep + 'sim_' + sim + os.sep + 'peopleTime_' + neighThres + '.txt','r')
 
 rCount = 0
 for record in disFile:
@@ -104,16 +104,20 @@ for record in disFile:
 	                            #compute density contribution
 	                            STKDE = densityF(xC, yC, tC, nX, nY, nT, hs, ht)
                                 #print(densityF(xC, yC, tC, nX, nY, nT, hs, ht))
-	                            fullGridArr[i][j][k][5] += STKDE[0] / pop       #column 5 of fullGridArr (formerly spatial bandwidth ds) is overwritten here to hold spatial KDE value ks
-	                            fullGridArr[i][j][k][6] += STKDE[1] / pop       #column 6 of fullGridArr (formerly temporal bandwidth dt) is overwritten here to hold temporal KDE value kt
+	                            fullGridArr[i][j][k][5] += STKDE[0] /  (pop+1)       #column 5 of fullGridArr (formerly spatial bandwidth ds) is overwritten here to hold spatial KDE value ks
+	                            fullGridArr[i][j][k][6] += STKDE[1] / (pop+1)       #column 6 of fullGridArr (formerly temporal bandwidth dt) is overwritten here to hold temporal KDE value kt
                                 #print(fullGridArr[i][j][k][5])
     rCount += 1
 
 disFile.close()
 
-np.save('outputs/ST_IB_3' + os.sep + 'sim_' + sim + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+outDir = 'outputs/ST_IB_3' + os.sep + 'sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+#np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+np.save(outDir + os.sep + 'fullGrid_v2_' + neighThres,fullGridArr)
 
-'''
+
 #initialize output array
 nRows = xDim * yDim * tDim
 nCols = 8   #columns ID, x, y, t, nCount, Ks, Kt
@@ -151,7 +155,8 @@ outArr[:,6]= outArr[:,6] * outArr[:,7]
 #delete column
 finalArr = np.delete(outArr, (7), 1)        #finalArr: [ID, x, y, t, nCount, pCount, density]
 
-outFile = open('outputs/ST_IB_3/sim_' + sim + os.sep + 'density_' + neighThres + '.txt','w')
+#outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt','w')
+outFile = open(outDir + os.sep + 'density_v2_' + neighThres + '.txt','w')
 
 for i in finalArr:
     if i[1] == 0 and i[2] == 0 and i[3]  == 0:
@@ -161,4 +166,3 @@ for i in finalArr:
         outFile.write(str(i[1]) + "," + str(i[2]) + "," + str(i[3]) + "," + str(i[4]) + "," + str(i[5]) + "," + str(i[6]) + "\n")
 
 outFile.close()
-'''

@@ -94,7 +94,11 @@ numPts = len(disList)
 
 #------------------------------------------------
 # open output File
-outFile = open('outputs/ST_IB_2' + os.sep + 'sim_' + sim + os.sep + 'peopleTime_' + neighThres + '.txt','w')
+outDir = 'outputs/ST_IB_2' + os.sep + 'sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+
+outFile = open(outDir + os.sep + 'peopleTime_' + neighThres + '.txt','w')
 
 #------------------------------------------------
 # define get overlap function. returns overlap between two intervals.
@@ -140,5 +144,5 @@ for i in disList:
 outFile.close()
 
 #fullGridArr: [x, y, t, 0, pCount, 0, 0]
-np.save('outputs/ST_IB_2' + os.sep + 'sim_' + sim + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
 
