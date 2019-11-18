@@ -115,7 +115,7 @@ outDir = 'outputs/ST_IB_3' + os.sep + 'sim_' + sim
 if not os.path.exists(outDir):
     os.makedirs(outDir)
 #np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
-np.save(outDir + os.sep + 'fullGrid_v2_' + neighThres,fullGridArr)
+np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
 
 
 #initialize output array
@@ -140,7 +140,7 @@ while xIndex < xDim:
             outArr[ID][5] = fullGridArr[xIndex][yIndex][tIndex][4]     #pCount
             outArr[ID][6] = fullGridArr[xIndex][yIndex][tIndex][5]     #s-density Ks
             outArr[ID][7] = fullGridArr[xIndex][yIndex][tIndex][6]     #t-density Kt
-            print(outArr[ID][6],outArr[ID][6])
+            #print(outArr[ID][6],outArr[ID][6])
 
             ID += 1
             tIndex += 1
@@ -156,7 +156,7 @@ outArr[:,6]= outArr[:,6] * outArr[:,7]
 finalArr = np.delete(outArr, (7), 1)        #finalArr: [ID, x, y, t, nCount, pCount, density]
 
 #outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt','w')
-outFile = open(outDir + os.sep + 'density_v2_' + neighThres + '.txt','w')
+outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt','w')
 
 for i in finalArr:
     if i[1] == 0 and i[2] == 0 and i[3]  == 0:
