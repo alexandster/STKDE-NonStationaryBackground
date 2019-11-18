@@ -1,5 +1,5 @@
 #ST_IB_MC_2.py
-#This script
+#This script computes population within each kernel
 
 import numpy as np
 from scipy import spatial

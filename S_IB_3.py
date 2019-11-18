@@ -45,10 +45,9 @@ def densityF(x, y, xi, yi, hs):
 #number of points in each dimension
 xDim = int((xmax - xmin)/xyRes)  
 yDim = int((ymax - ymin)/xyRes)  
-print('xDim: ', xDim, 'yDim: ', yDim)
 
 #load regular grid: 3d grid of tuples: (x, y, nCount, pCount, ds)
-fullGridArr = np.load('/scratch/ahohl/dissertation2D/out_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')   
+fullGridArr = np.load('outputs/S_IB_2/sim_' + sim + os.sep + 'fullGrid_' + neighThres + '.npy')
 
 #------------------------------------------------
 ## read file containing case coordinates and bandwidths
@@ -91,7 +90,7 @@ for record in disFile:
                         #compute density contribution
                         KDE = densityF(xC, yC, nX, nY, hs)
                         #print KDE/pop
-                        fullGridArr[i][j][4] += KDE / pop
+                        fullGridArr[i][j][4] += KDE / (pop+1)
                        
     rCount += 1
 
@@ -125,9 +124,11 @@ print(max(testList))
 outArr[:,5]= outArr[:,5]/max(outArr[:,5])
 
 # create directory
-outdir = 'oututs/S_IB_3' + os.sep + 'sim_' + sim
+outDir = 'outputs/S_IB_3/sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
 
-outFile = open(outdir + os.sep + 'density_' + neighThres + '.txt','w')
+outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt','w')
 
 for i in outArr:
     if i[1] == 0 and i[2] == 0:

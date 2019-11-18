@@ -1,5 +1,5 @@
 #ST_IB_MC_1.py
-#This script
+#This script describes the computation of space-time bandwidths of kernels centered on data points
 
 #import modules
 import numpy as np

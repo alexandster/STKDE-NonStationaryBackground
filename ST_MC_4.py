@@ -1,5 +1,5 @@
 #ST_IB_MC_4.py
-#This script
+#This script creates an index file that delineates clusters based on risk threshold and computes odds ratios.
 
 import numpy as np
 from scipy import spatial
@@ -28,7 +28,7 @@ if not os.path.exists(outDir):
     os.makedirs(outDir)
 
 #load regular grid: 2d grid of tuples: (x, y, t, nCount, pCount, k)
-inArr = np.loadtxt(indir + os.sep + "density_v2_" + neighThres + ".txt",delimiter=",")
+inArr = np.loadtxt(indir + os.sep + "density_" + neighThres + ".txt",delimiter=",")
 
 #compute total number of cases and controls
 casTotal = sum(inArr[:,3])	#cases

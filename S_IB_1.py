@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import spatial
-import sys
+import sys, os
 
 #------------------------------------------------
 # read case points file
@@ -25,6 +25,11 @@ sTree = spatial.cKDTree(inXY_s)
 #initialize variables
 
 neighThresList = [25,30,35,40,45]       # minimum number of neighbors threshold
+
+# output folder
+outDir = 'outputs/S_IB_1'
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
 
 for neighThres in neighThresList:
 

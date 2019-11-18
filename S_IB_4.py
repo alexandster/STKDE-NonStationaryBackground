@@ -19,6 +19,10 @@ yDim = int((ymax - ymin)/xyRes)
 indir = 'outputs/S_IB_3' + os.sep + 'sim_' + sim
 outDir = 'outputs/S_IB_4' + os.sep + 'sim_' + sim
 
+# output folder
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+
 #load regular grid: 2d grid of tuples: (x, y, nCount, pCount, d)
 inArr = np.loadtxt(indir + os.sep + 'density_' + neighThres + '.txt',delimiter=',')
 

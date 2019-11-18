@@ -1,5 +1,5 @@
 #ST_IB_MC_3.py
-#This script
+#This script computes ST-IB based on kernel bandwidths (from ST_MC_1.py) and population within kernel (from ST_MC_2.py)
 
 
 import numpy as np

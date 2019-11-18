@@ -3,7 +3,7 @@
 
 import numpy as np
 from scipy import spatial
-import sys
+import sys, os
 
 #------------------------------------------------
 # read case points file

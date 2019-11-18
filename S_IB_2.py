@@ -5,8 +5,6 @@ import sys, os
 sim = sys.argv[1]				#simulation 0-99
 neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
 
-print sim, neighThres
-
 #------------------------------------------------
 #spatiotemporal domain and resolution
 xmin, xmax, ymin, ymax = 323000, 337300, 369100, 387700
@@ -129,4 +127,4 @@ for i in disList:
 
 outFile.close()
 
-np.save('outputs/S_IB_2' + os.sep + 'sim_' + sim + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
