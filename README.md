@@ -78,3 +78,11 @@ Execute in order
    - parameters: simulation number, ST neighbor threshold
    - inputs: risk estimates
    - outputs: odds ratios
+   
+15. envelope.py - Produces lower and upper envelopes of risk estimates that stem from population simulation.
+   - inputs: risk estimates
+   - outpus: envelopes
+ 
+16. envelope_diff.py - Calculates difference between upper and lower envelope
+   - inputs: envelopes
+   - outputs: array of differences between upper and lower envelope
