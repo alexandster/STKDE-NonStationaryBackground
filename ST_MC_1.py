@@ -1,4 +1,4 @@
-#ST_IB_MC_1.py, by Alexander Hohl
+#ST_IB_MC_1.py
 #This script
 
 #import modules
@@ -34,8 +34,12 @@ mNN = np.inf
 #current number of neighbors
 NN = numPts
 
-#outup path
-outFile = open('outputs/ST_MC_1/sim_' + sim + os.sep + 'bandwidths_' + str(neighThres) + '.txt','w')
+# output folder
+outDir = 'outputs/ST_MC_1/sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+
+outFile = open(outDir + os.sep + 'bandwidths_' + str(neighThres) + '.txt','w')
 
 #loop through all data points
 i = 200

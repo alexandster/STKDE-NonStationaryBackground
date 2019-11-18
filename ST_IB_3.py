@@ -1,4 +1,4 @@
-#ST_IB_3.py, by Alexander Hohl
+#ST_IB_3.py
 #This script computes ST-IB based on kernel bandwidths (from ST_IB_1.py) and population within kernel (from ST_IB_2.py)
 
 import numpy as np

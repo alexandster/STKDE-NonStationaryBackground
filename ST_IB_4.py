@@ -1,4 +1,4 @@
-#ST_IB_4.py, by Alexander Hohl
+#ST_IB_4.py
 #This script creates an index file that delineates clusters based on risk threshold and computes odds ratios.
 
 import numpy as np

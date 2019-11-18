@@ -1,4 +1,4 @@
-#ST_IB_2.py, by Alexander Hohl
+#ST_IB_2.py
 #This script computes population within each kernel
 
 import numpy as np

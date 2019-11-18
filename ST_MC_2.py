@@ -1,4 +1,4 @@
-#ST_IB_MC_2.py, by Alexander Hohl
+#ST_IB_MC_2.py
 #This script
 
 import numpy as np
@@ -72,7 +72,7 @@ while xG < xmax:
 i = 0
 popList = []
 while i <  334:
-    popFile = open('outputs/pop_model/sim_0/barrio_" + str(i) + ".txt", "r")		#since uncertainty from population simulation is small, we can just pick the first dataset
+    popFile = open('outputs/pop_model/sim_0/barrio_' + str(i) + ".txt", "r")		#since uncertainty from population simulation is small, we can just pick the first dataset
     for record in popFile:
         x, y, tStart, tEnd = record.split(",")
         popList.append([float(x),float(y),float(tStart),float(tEnd.strip()), 0])
@@ -93,7 +93,9 @@ numPts = len(disList)
 
 #------------------------------------------------
 # output directory
-outDir = 'outputs/ST_MC_2' + os.sep + 'sim_' + sim
+outDir = 'outputs/ST_MC_2/sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
 
 # open output File
 outFile = open(outDir + os.sep + "peopleTime_" + neighThres + ".txt",'w')

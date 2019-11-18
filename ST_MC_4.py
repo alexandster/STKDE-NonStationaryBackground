@@ -1,4 +1,4 @@
-#ST_IB_MC_4.py, by Alexander Hohl
+#ST_IB_MC_4.py
 #This script
 
 import numpy as np
@@ -22,6 +22,10 @@ tDim = int((tmax - tmin)/tRes)
 
 indir = 'outputs/ST_MC_3' + os.sep + 'sim_' + sim
 outDir = 'outputs/ST_MC_4' + os.sep + 'sim_' + sim
+
+# output folder
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
 
 #load regular grid: 2d grid of tuples: (x, y, t, nCount, pCount, k)
 inArr = np.loadtxt(indir + os.sep + "density_v2_" + neighThres + ".txt",delimiter=",")
@@ -59,8 +63,6 @@ for percThres in percThresList:
     oddsRatio = clustRatio/nonClustRatio
 
     outFile.write(str(oddsRatio) + "\n") 
-
-
 
 outFile.close()
 

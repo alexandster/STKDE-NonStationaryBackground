@@ -1,4 +1,4 @@
-#ST_IB_1.py, by Alexander Hohl
+#ST_IB_1.py
 #This script describes the computation of space-time bandwidths of kernels centered on data points
 
 import numpy as np
@@ -31,11 +31,16 @@ NN = numPts            # big number: number of nearest neighbors to search for
 
 neighThresList = [25,30,35,40,45]       # minimum number of ST neighbors threshold
 
+# output folder
+outDir = 'outputs/ST_IB_1'
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+
 for neighThres in neighThresList:
 
     #------------------------------------------------
     # open output file
-    outFile = open('outputs/ST_IB_1/bandwidths_' + str(neighThres) + '.txt','w')
+    outFile = open(outDir + os.sep + 'bandwidths_' + str(neighThres) + '.txt','w')
 
     i = 200              # iterator variable. ignore first couple of datapoints because they are early in the study period and might not have enough teporal neighbors.
 

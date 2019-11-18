@@ -1,4 +1,4 @@
-#ST_IB_MC_3.py, by Alexander Hohl
+#ST_IB_MC_3.py
 #This script
 
 
@@ -102,8 +102,8 @@ for record in disFile:
 
 	                            #compute density contribution
 	                            STKDE = densityF(xC, yC, tC, nX, nY, nT, hs, ht)
-	                            fullGridArr[i][j][k][5] += STKDE[0] / pop
-	                            fullGridArr[i][j][k][6] += STKDE[1] / pop
+	                            fullGridArr[i][j][k][5] += STKDE[0] / (pop+1)
+	                            fullGridArr[i][j][k][6] += STKDE[1] / (pop+1)
 								
     rCount += 1
 
@@ -146,7 +146,11 @@ outArr[:,6]= outArr[:,6] * outArr[:,7]
 finalArr = np.delete(outArr, (7), 1)
 
 # create directory
-outFile = open('outputs/ST_MC_3' + os.sep + 'sim_' + sim + os.sep + 'density_' + neighThres + '.txt',"w")
+outDir = 'outputs/ST_MC_3/sim_' + sim
+if not os.path.exists(outDir):
+    os.makedirs(outDir)
+
+outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt',"w")
 
 for i in finalArr:
     if i[1] == 0 and i[2] == 0 and i[3]  == 0:
