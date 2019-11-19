@@ -71,6 +71,6 @@ for percThres in percThresList:
 
     oddsRatio = clustRatio/nonClustRatio
 
-    outFile.write(str(percThres) + "," + str(oddsRatio) + "\n") 
+    outFile.write(str(oddsRatio) + "\n")
 
 outFile.close()
