@@ -91,6 +91,6 @@ Execute in order
    - inputs: envelopes
    - outputs: histogram (Figure 9)
 
-18. odds_ration_surface.py
+18. odds_ratio_surface.py - Computes the difference in odds ratios between ST_IB and S_IB
    - inputs: odds ratios
-   - outputs: odds_ratio surface 
+   - outputs: odds_ratio differences surface (serves as basis for Figure 12)
