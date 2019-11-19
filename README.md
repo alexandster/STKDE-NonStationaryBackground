@@ -81,11 +81,11 @@ Execute in order
    
 15. envelope.py - Produces lower and upper envelopes of risk estimates that stem from population simulation.
    - inputs: risk estimates
-   - outpus: envelopes
+   - outpus: upper and lower envelopes (Figure 10)
  
 16. envelope_diff.py - Calculates difference between upper and lower envelope
    - inputs: envelopes
-   - outputs: array of differences between upper and lower envelope
+   - outputs: array of differences between upper and lower envelope (Figure 11)
 
 17. histo.r - Creates histogram of differences between upper and lower envelope
    - inputs: envelopes
