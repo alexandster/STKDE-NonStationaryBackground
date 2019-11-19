@@ -94,3 +94,7 @@ Execute in order
 18. odds_ratio_surface.py - Computes the difference in odds ratios between ST_IB and S_IB
    - inputs: odds ratios
    - outputs: odds_ratio differences surface (serves as basis for Figure 12)
+
+19. cluster_extract.py - extracts voxels from the grid that have been identified as clustered
+   - inputs: grid of density estimates, cluster index
+   - outputs: clustered voxels
