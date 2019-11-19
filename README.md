@@ -86,3 +86,7 @@ Execute in order
 16. envelope_diff.py - Calculates difference between upper and lower envelope
    - inputs: envelopes
    - outputs: array of differences between upper and lower envelope
+
+17. histo.r - Creates histogram of differences between upper and lower envelope
+   - inputs: envelopes
+   - outputs: histogram (Figure 9)
