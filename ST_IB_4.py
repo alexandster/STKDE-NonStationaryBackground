@@ -32,7 +32,6 @@ indir = 'outputs/ST_IB_3' + os.sep + 'sim_' + sim
 outDir = 'outputs/ST_IB_4' + os.sep + 'sim_' + sim
 if not os.path.exists(outDir):
     os.makedirs(outDir)
-outDir = 'outputs/ST_IB_4' + os.sep + 'sim_' + sim
 
 #load regular grid: 2d grid of tuples: (x, y, t, nCount, pCount, k)
 inArr = np.loadtxt(indir + os.sep + 'density_' + neighThres + '.txt',delimiter=',')
