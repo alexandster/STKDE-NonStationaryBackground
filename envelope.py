@@ -20,7 +20,7 @@ i = 1
 while i < 2:
 
     #for each voxel in perturbed dataset
-    inFile = open(mdir + str(i) + os.sep + "density_25.txt", "r")
+    inFile = open(mdir + str(i) + os.sep + "density_35.txt", "r")
     for counter, value in enumerate(inFile):
         x = float(value.split(",")[0])
         y = float(value.split(",")[1])
