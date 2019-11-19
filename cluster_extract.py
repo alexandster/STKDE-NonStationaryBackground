@@ -1,11 +1,11 @@
-#ST_IB_4.py, by Alexander Hohl
+#cluster_extract.py
 #This script uses the index file (from ST_IB_4.py) to extract clusters from regular grid file.
 
 
 import numpy as np
 import math, sys, os
 
-#extract a cluster: x, y, t tuples that denote cluster voxels. for visualization. although this can be achieved through isosurfaces in voxler.
+#extract a cluster: x, y, t tuples that denote cluster voxels.
 
 sim = 0              #simulation number. here, the simulation number refers to population simulation. As the uncertainty from population simulation is negliglible, we can just pick one dataset
 neighThres = 35       # minimum number of ST neighbors threshold
