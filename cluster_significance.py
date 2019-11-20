@@ -54,5 +54,4 @@ while i <= 1:
     outFile.write('Odds ratio simulation ' + str(i) + ' :' + str(oddsRatio) + "\n")
 
     i += 1
-
 outFile.close()
