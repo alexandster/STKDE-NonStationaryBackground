@@ -49,7 +49,6 @@ for percThres in percThresList:
     #compute threshold (percentile)
     thres = np.percentile(inArr[nonZeroIndex][:,5], percThres)
 
-
     #select voxels with densities above threshold 
     aboveThresIndex = np.where(inArr[:,5] > thres)
 
