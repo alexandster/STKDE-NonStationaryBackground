@@ -49,7 +49,7 @@ Execute in order
    - inputs: populaiton columns, bandwidths
    - outputs: population within kernel
 
-9. ST_MC_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
+09. ST_MC_3.py - Computes ST-IB based on kernel bandwidths (ST_IB_1.py) and population within kernel (ST_IB_2)
    - parameters: simulation number, ST neighbor threshold
    - inputs: bandwdidths, population within kernel
    - outputs: risk estimates
