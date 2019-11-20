@@ -110,7 +110,6 @@ def getOverlap(a, b):
 #build kd tree
 sTree = spatial.cKDTree(popArr[:,:2])
 
-#printcounter = 0
 count = 0
 #for each disease case, compute populaiton inside kernel
 for i in disList:
