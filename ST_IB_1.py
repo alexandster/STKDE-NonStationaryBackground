@@ -90,7 +90,7 @@ for neighThres in neighThresList:
                 k = j
             else:
                 k = len(tNeigh) - 1
-            #print(tNeigh)
+            
             tDist = tCoord - inXYT_s[tNeigh[k],2]
 
             if sDist > sDistMax:
@@ -99,8 +99,7 @@ for neighThres in neighThresList:
                 tDistMax = tDist
 
             j += 1
-        #print(j, tCoord)
-
+        
         outFile.write(str(i) + "," + str(sCoord[0]) + "," + str(sCoord[1]) + "," + str(tCoord) + "," + str(sDistMax) + "," + str(tDistMax) + "\n")
 
         i += 1
