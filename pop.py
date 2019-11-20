@@ -1,4 +1,4 @@
-#pop.py, by Alexander Hohl
+#pop.py
 #This script creates the population columns, additing the temporal components to the x, y coordinates of the random points created by random_points.r
 
 #--------------------------------------------------------------
