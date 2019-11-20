@@ -1,14 +1,12 @@
 #ST_IB_MC_3.py
 #This script computes ST-IB based on kernel bandwidths (from ST_MC_1.py) and population within kernel (from ST_MC_2.py)
 
-
 import numpy as np
 from scipy import spatial
 import math, sys, os
 
 sim = sys.argv[1]
 neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
-
 
 #spatiotemporal domain
 xmin, xmax, ymin, ymax, tmin, tmax = 323000, 337300, 369100, 387700, 14, 730
