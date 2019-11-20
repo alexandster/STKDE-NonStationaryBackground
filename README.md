@@ -10,6 +10,12 @@ Keywords: kernel density estimation, inhomogeneous, background, adaptive, diseas
 
 The dengue fever data cannot be made publicly available as we do not have an agreement with the provider to share it.  In this repository, we include a simulated mock dataset, which serves as a detailed description of content and format of the dengue fever data. It should be sufficient for applying ST-IB to other spatiotemporal point datasets. All other data and codes used in this study are available here.
 
+<b>Acknowledgements</b>
+
+We would like to thank Peilin Chen (Intermountain Healthcare) and Brett Ruether (University of Utah) for proofreading the manuscript.
+
+<b>How to run ST-IB</b>
+
 Required modules: numpy, scipy
 
 Execute in order
