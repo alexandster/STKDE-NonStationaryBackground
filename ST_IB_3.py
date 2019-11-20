@@ -103,10 +103,10 @@ for record in disFile:
 
 	                            #compute density contribution
 	                            STKDE = densityF(xC, yC, tC, nX, nY, nT, hs, ht)
-                                #print(densityF(xC, yC, tC, nX, nY, nT, hs, ht))
+                                
 	                            fullGridArr[i][j][k][5] += STKDE[0] /  (pop+1)       #column 5 of fullGridArr (formerly spatial bandwidth ds) is overwritten here to hold spatial KDE value ks
 	                            fullGridArr[i][j][k][6] += STKDE[1] / (pop+1)       #column 6 of fullGridArr (formerly temporal bandwidth dt) is overwritten here to hold temporal KDE value kt
-                                #print(fullGridArr[i][j][k][5])
+                                
     rCount += 1
 
 disFile.close()
@@ -114,7 +114,7 @@ disFile.close()
 outDir = 'outputs/ST_IB_3' + os.sep + 'sim_' + sim
 if not os.path.exists(outDir):
     os.makedirs(outDir)
-#np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
+
 np.save(outDir + os.sep + 'fullGrid_' + neighThres,fullGridArr)
 
 
@@ -140,8 +140,7 @@ while xIndex < xDim:
             outArr[ID][5] = fullGridArr[xIndex][yIndex][tIndex][4]     #pCount
             outArr[ID][6] = fullGridArr[xIndex][yIndex][tIndex][5]     #s-density Ks
             outArr[ID][7] = fullGridArr[xIndex][yIndex][tIndex][6]     #t-density Kt
-            #print(outArr[ID][6],outArr[ID][6])
-
+            
             ID += 1
             tIndex += 1
         yIndex += 1
@@ -155,7 +154,6 @@ outArr[:,6]= outArr[:,6] * outArr[:,7]
 #delete column
 finalArr = np.delete(outArr, (7), 1)        #finalArr: [ID, x, y, t, nCount, pCount, density]
 
-#outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt','w')
 outFile = open(outDir + os.sep + 'density_' + neighThres + '.txt','w')
 
 for i in finalArr:
