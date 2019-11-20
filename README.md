@@ -43,7 +43,7 @@ Execute in order
    - inputs: simulated points
    - outputs: bandwidths
 
-8. ST_MC_2.py - Computes population within each kernel
+08. ST_MC_2.py - Computes population within each kernel
    - parameters: simulation number, ST neighbor threshold
    - inputs: populaiton columns, bandwidths
    - outputs: population within kernel
