@@ -9,8 +9,7 @@ sim = sys.argv[1]
 neighThres = sys.argv[2]       # minimum number of ST neighbors threshold
 
 #percentile thresholds of disease risk
-#percThresList = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.9, 99.99]
-percThresList = [91, 93, 95, 97, 99, 99.99]
+percThresList = [90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 99.9, 99.99]
 
 #------------------------------------------------
 #points_obs spatiotemporal envelope (domain)
@@ -46,8 +45,7 @@ nonZeroIndex = np.where(inArr[:,5] > 0.0)
 outFile = open(outDir + os.sep + "odds_ratio_" + neighThres + ".txt", "w")
 
 for percThres in percThresList:
-    print(percThres)
-
+    
     #compute threshold (percentile)
     thres = np.percentile(inArr[nonZeroIndex][:,5], percThres)
 
@@ -55,13 +53,12 @@ for percThres in percThresList:
     #select voxels with densities above threshold 
     aboveThresIndex = np.where(inArr[:,5] > thres)
 
-    #np.save(outDir + os.sep + "clustIndex_" + str(neighThres) + "_" + str(percThres), aboveThresIndex)
+    np.save(outDir + os.sep + "clustIndex_" + str(neighThres) + "_" + str(percThres), aboveThresIndex)
 
     #compute number of cases and controls inside cluster
     casClust = sum(inArr[aboveThresIndex][:,3])
     conClust = sum(inArr[aboveThresIndex][:,4])
-    print(casClust, conClust)
-
+    
     casNonClust = casTotal-casClust
     conNonClust = conTotal-conClust
 
