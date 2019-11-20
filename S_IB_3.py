@@ -100,7 +100,7 @@ disFile.close()
 nRows = xDim * yDim
 nCols = 6   #columns ID, x, y, nCount, pCount, Ks
 outArr = np.zeros((nRows,nCols))
-testList = []
+
 ID = 0
 xIndex = 0
 while xIndex < xDim:
@@ -112,14 +112,12 @@ while xIndex < xDim:
         outArr[ID][3] = fullGridArr[xIndex][yIndex][2]     #nCount
         outArr[ID][4] = fullGridArr[xIndex][yIndex][3]     #pCount
         outArr[ID][5] = fullGridArr[xIndex][yIndex][4]     #s-density Ks
-        testList.append(fullGridArr[xIndex][yIndex][3])
+        
         ID += 1
         yIndex += 1
     xIndex += 1
 
 #scale Ks to 0-1
-
-print(max(testList))
 
 outArr[:,5]= outArr[:,5]/max(outArr[:,5])
 
