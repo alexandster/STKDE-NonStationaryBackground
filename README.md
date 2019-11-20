@@ -98,3 +98,7 @@ Execute in order
 19. cluster_extract.py - extracts voxels from the grid that have been identified as clustered
    - inputs: grid of density estimates, cluster index
    - outputs: clustered voxels
+
+20. cluster_significance.py - determines whether an observed cluster is significant by comparing odds ratios against simulated ones.
+   - inputs: cluster index, odds ratios
+   - outputs: cluster significance
