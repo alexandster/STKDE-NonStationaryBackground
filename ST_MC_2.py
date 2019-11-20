@@ -19,9 +19,6 @@ xDim = int((xmax - xmin)/xyRes)
 yDim = int((ymax - ymin)/xyRes)  
 tDim = int((tmax - tmin)/tRes)  
 
-#print xDim, yDim, yDim
-
-
 # function to convert coordinates to index for inArr
 #--------------------------------------------------------------------------------------
 def coordToIndex(x,y,tStart,tEnd):
@@ -123,7 +120,7 @@ for i in disList:
     pt = 0      #people-time: how many people present inside kernel for how long? population adjustment.
     # for each population neighbor, calculate length of stay within kernel
     for j in sNeigh:
-        #print("j: ", j)
+        
         popStart = popArr[j,2]      #start of population column
         popEnd = popArr[j,3]        #end of population column
         kerEnd = i[3]               #end of kernel (=time of disase case)
